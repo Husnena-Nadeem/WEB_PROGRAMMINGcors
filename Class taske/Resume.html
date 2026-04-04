@@ -6,15 +6,16 @@
     <title>Resume</title>
 </head>
 <style>
-    body{
+    body {
         background-image: url("download (1).jfif");
         background-size: cover;
         background-repeat: no-repeat;
+        background-position: center;
         background-attachment: fixed;
+
         font-family: 'Times New Roman', Times, serif;
         color: oldlace;
-        position: fixed;
-        height: 150vh;
+        height: 100%;
         margin: 0;
     }
     header{
@@ -25,10 +26,11 @@
         padding: 20px;
         font-size: 30px;
     }
-    nav{
-        background-color : rgba(0,0,0,0.6);
-        padding :10px;
-        border-radius: 10px;
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
     }
     .btn {
         text-decoration: none;
@@ -55,30 +57,36 @@
         text-align: center;
     }
 
-th {
-    background-color: rgba(255,255,255,0.2);
-}
+    th {
+        background-color: rgba(255,255,255,0.2);
+    }
+    tr:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
     .Education{
         background-color:rgba(0,0,0,0.6);
         border-radius:15px;
         padding:20px;
         margin: 20px;
     }
-    .skills{
-        background-color:rgba(0,0,0,0.6);
-        border-radius: 15px;
-        padding: 20px;
-        margin:20px;
-
+  .skills ul {
+        list-style: none;
+        padding: 0;
     }
-    footer{
+
+    .skills li {
+        background: rgba(255,255,255,0.2);
+        margin: 5px;
+        padding: 8px;
+        border-radius: 10px;
+    }
+    footer {
         text-align: center;
-        background-colore:rgb(0,0,0,0.6);
-        padding:20px;
-        margin:20px;
-
-
-    }
+        background-color: rgba(0,0,0,0.6);
+        padding: 15px;
+        margin: 20px;
+        border-radius: 10px;
+}
 </style>
 <body>
     <header>
