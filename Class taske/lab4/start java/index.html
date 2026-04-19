@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RGB Boxes</title>
+
+    <style>
+        .box{
+            text-align: center;
+            width:120px;
+            height:80px;
+            line-height:80px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;  /* center me laata hai */
+            gap: 20px;               /* boxes ke darmiyan space */
+        }
+        .box{
+            text-align: center;
+            width:150px;
+            height:100px;
+            margin:15px auto;
+            border:2px solid black;
+            line-height:100px;
+            font-weight:bold;
+        }
+
+        input{
+            width:80px;
+            padding:5px;
+            margin:10px;
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>RGB Color Boxes</h2>
+
+<!-- RED -->
+<div class="container">
+    <div>
+        <div class="box" id="redBox">RED</div>
+        <input type="number" id="r" oninput="changeColor()">
+    </div>
+
+    <div>
+        <div class="box" id="greenBox">GREEN</div>
+        <input type="number" id="g" oninput="changeColor()">
+    </div>
+
+    <div>
+        <div class="box" id="blueBox">BLUE</div>
+        <input type="number" id="b" oninput="changeColor()">
+    </div>
+</div>
+<script>
+function changeColor(){
+
+    // values lena + limit (0-255)
+    var r = parseInt(document.getElementById("r").value) || 0;
+    var g = parseInt(document.getElementById("g").value) || 0;
+    var b = parseInt(document.getElementById("b").value) || 0;
+
+    r = Math.min(Math.max(r,0),255);
+    g = Math.min(Math.max(g,0),255);
+    b = Math.min(Math.max(b,0),255);
+
+    // input box me bhi correct value wapas set
+    document.getElementById("r").value = r;
+    document.getElementById("g").value = g;
+    document.getElementById("b").value = b;
+
+    // har box ka apna color
+    document.getElementById("redBox").style.backgroundColor = "rgb(" + r + ",0,0)";
+    document.getElementById("greenBox").style.backgroundColor = "rgb(0," + g + ",0)";
+    document.getElementById("blueBox").style.backgroundColor = "rgb(0,0," + b + ")";
+
+    // body ka mixed color
+    document.body.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+}
+</script>
+
+</body>
+</html>
