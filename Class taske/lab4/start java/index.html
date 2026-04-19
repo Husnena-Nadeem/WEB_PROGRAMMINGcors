@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <style>
+        body {
+            background-color: lightblue;
+            padding: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 15px;
+            margin: 10px;
+            border: 2px solid black;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid green;
+            background-color: #e6ffe6;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Registration System</h2>
+
+<form onsubmit="return registerStudent()">
+    Name: <input type="text" id="name"><br><br>
+    Email: <input type="email" id="email"><br><br>
+    Age: <input type="number" id="age"><br><br>
+
+    Course:
+    <select id="course">
+        <option>Web Development</option>
+        <option>AI</option>
+        <option>Data Science</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+function registerStudent() {
+
+    // Step 1: Get values
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var age = document.getElementById("age").value;
+    var course = document.getElementById("course").value;
+
+    // Step 2: Validation
+    if (name == "") {
+        alert("Name is required");
+        return false;
+    }
+
+    if (age < 18 || age > 30) {
+        alert("Age must be between 18 and 30");
+        return false;
+    }
+
+    // Step 3: Display output
+    document.getElementById("output").innerHTML =
+        "<h3>Student Registered Successfully!</h3>" +
+        "Name: " + name + "<br>" +
+        "Email: " + email + "<br>" +
+        "Age: " + age + "<br>" +
+        "Course: " + course;
+
+    return false; // page reload na ho
+}
+</script>
+
+</body>
+</html>
