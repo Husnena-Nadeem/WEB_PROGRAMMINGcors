@@ -1,0 +1,76 @@
+<!Doctype>
+<html>
+    <head>
+        <title>Student Registration</title>
+        <style>
+            body{
+                background-color: lightblue ;
+                padding: 2px;
+                margin: 2px;
+            }
+
+            form{
+                background-color: white;
+                padding:15px;
+                margin:15px;
+                border: 2px solid black;
+
+            }
+            #output{
+                background-color: rgb(191, 247, 249);
+                margin: 2px;
+                padding:10px;
+                border:green solid 2px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h2>Student Registration System</h2>
+        </header>
+        <form onsubmit =" return registrationSystem()">
+            Name: <input type ="text" id = "name"><br><br>
+            Email: <input type ="email" id ="email"><br><br>
+            Password:<input type ="password" id="password"><br><br>
+            Age:<input type ="number"id= "age"><br><br>
+            course:<select id ="course">
+                <option>web Development</option>
+                <option>AI</option>
+                <option>Data Science</option>
+            </select><br><br>
+            <button type="submit">Submit</button>
+
+        </form>
+        <div id="output"></div>
+        <script>
+            function registrationSystem(){
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var age = document.getElementById("age").value;
+                var course = document.getElementById("course").value;
+                            
+                if(name == ""){
+                alert("Name is required");
+                return false;
+                }
+                if(age<18 || age>30){
+                    alert("Age must be between 18 and 30");
+                    return false;
+                }
+                document.getElementById("output").innerHTML=
+                "<h1>Registration Successful</h1>"+
+                "Name: "+ name + "<br>"+
+                "Email: " + email + "<br>"+
+                "Age:" + age + "<br>"+
+                "Course: " + course;
+                return false;
+                 
+
+
+            }
+        </script>
+ 
+    </body>
+</html>
