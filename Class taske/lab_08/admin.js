@@ -36,12 +36,19 @@ const defaultProducts = [
 function getProducts() {
   const savedProducts = localStorage.getItem(storageKey);
 
-  if (savedProducts) {
-    return JSON.parse(savedProducts);
+  if (!savedProducts) {
+    localStorage.setItem(storageKey, JSON.stringify(defaultProducts));
+    return defaultProducts;
   }
 
-  localStorage.setItem(storageKey, JSON.stringify(defaultProducts));
-  return defaultProducts;
+  const products = JSON.parse(savedProducts);
+
+  if (!Array.isArray(products) || products.length === 0) {
+    localStorage.setItem(storageKey, JSON.stringify(defaultProducts));
+    return defaultProducts;
+  }
+
+  return products;
 }
 
 function saveProducts(products) {
@@ -49,9 +56,17 @@ function saveProducts(products) {
 }
 
 function checkAdminAccess() {
+  const hasAccess = sessionStorage.getItem("adminAccess");
+
+  if (hasAccess === "true") {
+    return;
+  }
+
   const password = prompt("Enter admin password");
 
-  if (password !== "1234") {
+  if (password === "1234") {
+    sessionStorage.setItem("adminAccess", "true");
+  } else {
     alert("Wrong password");
     window.location.href = "index.html";
   }
@@ -66,11 +81,6 @@ function renderAdminProducts() {
 
   const products = getProducts();
   adminProductList.innerHTML = "";
-
-  if (products.length === 0) {
-    adminProductList.innerHTML = "<p>No products available.</p>";
-    return;
-  }
 
   products.forEach(function(product) {
     adminProductList.innerHTML += `
@@ -98,6 +108,7 @@ function deleteProduct(productId) {
 }
 
 function logoutAdmin() {
+  sessionStorage.removeItem("adminAccess");
   window.location.href = "index.html";
 }
 
@@ -119,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const productImage = document.getElementById("productImage").value.trim();
     const adminMessage = document.getElementById("adminMessage");
 
-    if (!productName || isNaN(productPrice) || !productImage) {
+    if (!productName || isNaN(productPrice)) {
       adminMessage.textContent = "Please fill all fields correctly.";
       adminMessage.style.color = "red";
       return;
@@ -131,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
       id: Date.now(),
       name: productName,
       price: productPrice,
-      image: productImage
+      image: productImage || "https://via.placeholder.com/400x250?text=SmartCar"
     };
 
     products.push(newProduct);

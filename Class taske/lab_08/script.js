@@ -1,5 +1,4 @@
 const storageKey = "smartCarProducts";
-const adminAccessKey = "smartCarAdminAccess";
 
 const defaultProducts = [
   {
@@ -40,12 +39,19 @@ let firstProduct = true;
 function getProducts() {
   const savedProducts = localStorage.getItem(storageKey);
 
-  if (savedProducts) {
-    return JSON.parse(savedProducts);
+  if (!savedProducts) {
+    localStorage.setItem(storageKey, JSON.stringify(defaultProducts));
+    return defaultProducts;
   }
 
-  localStorage.setItem(storageKey, JSON.stringify(defaultProducts));
-  return defaultProducts;
+  const products = JSON.parse(savedProducts);
+
+  if (!Array.isArray(products) || products.length === 0) {
+    localStorage.setItem(storageKey, JSON.stringify(defaultProducts));
+    return defaultProducts;
+  }
+
+  return products;
 }
 
 function renderProducts() {
@@ -86,7 +92,7 @@ function openAdminPage() {
   const password = prompt("Enter admin password");
 
   if (password === "1234") {
-    sessionStorage.setItem(adminAccessKey, "true");
+    sessionStorage.setItem("adminAccess", "true");
     window.location.href = "admin.html";
   } else if (password !== null) {
     alert("Wrong password");
@@ -131,13 +137,13 @@ function confirmPayment() {
 
   if (totalPayment === 0) {
     paymentMessage.textContent = "Please add a product first.";
-    paymentMessage.style.color = "#cc0000";
+    paymentMessage.style.color = "red";
     return;
   }
 
   if (!/^\d{16}$/.test(cardNumber)) {
     paymentMessage.textContent = "Please enter a valid 16-digit card number.";
-    paymentMessage.style.color = "#cc0000";
+    paymentMessage.style.color = "red";
     return;
   }
 
@@ -145,11 +151,19 @@ function confirmPayment() {
 
   if (isConfirmed) {
     paymentMessage.textContent = "Payment completed successfully.";
-    paymentMessage.style.color = "#198754";
+    paymentMessage.style.color = "green";
   } else {
     paymentMessage.textContent = "Payment was cancelled.";
-    paymentMessage.style.color = "#cc0000";
+    paymentMessage.style.color = "red";
   }
 }
 
-renderProducts();
+document.addEventListener("DOMContentLoaded", function() {
+  renderProducts();
+});
+
+window.showProducts = showProducts;
+window.showCart = showCart;
+window.openAdminPage = openAdminPage;
+window.addToCart = addToCart;
+window.confirmPayment = confirmPayment;
