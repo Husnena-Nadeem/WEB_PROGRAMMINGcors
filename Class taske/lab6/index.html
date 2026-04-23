@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenMart Grocery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>GreenMart Grocery</h1>
+        <p>Fresh Organic Products for Healthy Living</p>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>About Us</h2>
+        <p>GreenMart Grocery provides fresh organic fruits, vegetables, and daily essentials.
+           We focus on quality, health, and customer satisfaction.</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2>Our Products</h2>
+
+        <div class="product">
+            <h3>Apples</h3>
+            <p>Fresh red organic apples.</p>
+            <span>Price: $2/kg</span>
+        </div>
+
+        <div class="product">
+            <h3>Carrots</h3>
+            <p>Healthy and crunchy carrots.</p>
+            <span>Price: $1.5/kg</span>
+        </div>
+
+        <div class="product">
+            <h3>Milk</h3>
+            <p>Pure organic dairy milk.</p>
+            <span>Price: $3/litre</span>
+        </div>
+
+    </section>
+
+    <!-- Order Form -->
+    <section class="order">
+        <h2>Place Order</h2>
+
+        <form id="orderForm">
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <select id="product">
+                <option value="">Select Product</option>
+                <option>Apples</option>
+                <option>Carrots</option>
+                <option>Milk</option>
+            </select>
+
+            <input type="number" id="quantity" placeholder="Quantity">
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="error"></p>
+        <div id="result"></div>
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

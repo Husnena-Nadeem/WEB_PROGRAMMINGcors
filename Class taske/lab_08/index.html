@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCar Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#" onclick="showProducts(); return false;">Products</a>
+      <a href="#" onclick="showCart(); return false;">Cart</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <h1>SmartCar Store</h1>
+    <p>Select a car, enter quantity, and see the total payment in the output section.</p>
+
+    <section class="toggle-buttons">
+      <button type="button" onclick="showProducts()">Products</button>
+      <button type="button" onclick="showCart()">Cart</button>
+    </section>
+  </header>
+
+  <main>
+    <section class="products-section" id="productsSection">
+      <h2>Our Products</h2>
+      <section class="product-list" id="productList"></section>
+    </section>
+
+    <section class="output-section hidden-section" id="cartSection">
+      <h2>Output Section</h2>
+      <article class="cart-card">
+        <h3>Cart Details</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="outputBody">
+            <tr>
+              <td colspan="4">No product added yet.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p id="finalPayment">Total Payment: $0</p>
+
+        <label for="cardNumber">Enter Card Number:</label>
+        <input type="text" id="cardNumber" maxlength="16" placeholder="Enter 16-digit card number">
+
+        <button type="button" class="payment-button" onclick="confirmPayment()">Confirm Payment</button>
+
+        <p id="paymentMessage"></p>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

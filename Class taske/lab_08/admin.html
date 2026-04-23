@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCar Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Store</a>
+      <a href="admin.html">Admin</a>
+      <a href="#" onclick="logoutAdmin(); return false;">Logout</a>
+    </nav>
+
+    <h1>SmartCar Admin Panel</h1>
+    <p>Add product and delete product from here.</p>
+  </header>
+
+  <main>
+    <section class="admin-form-section">
+      <h2>Add Product</h2>
+
+      <form id="productForm">
+        <label for="productName">Product Name</label>
+        <input type="text" id="productName" placeholder="Enter product name">
+
+        <label for="productPrice">Product Price</label>
+        <input type="number" id="productPrice" placeholder="Enter product price">
+
+        <label for="productImage">Product Image URL</label>
+        <input type="text" id="productImage" placeholder="Enter image URL">
+
+        <button type="submit">Add Product</button>
+      </form>
+
+      <p id="adminMessage"></p>
+    </section>
+
+    <section class="admin-products-section">
+      <h2>Manage Products</h2>
+      <section class="admin-product-list" id="adminProductList"></section>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
