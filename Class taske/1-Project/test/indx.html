@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+</head>
+
+<body>
+
+  <h2>Simple Add</h2>
+
+  <input type="number" id="num1">
+  <input type="number" id="num2">
+
+  <button onclick="add()">Add</button>
+
+  <p id="result">Result: </p>
+
+  <script>
+    function add() {
+      let a = document.getElementById("num1").value;
+      let b = document.getElementById("num2").value;
+
+      let sum = Number(a) + Number(b);
+
+      document.getElementById("result").textContent = "Result: " + sum;
+    }
+  </script>
+
+</body>
+</html>

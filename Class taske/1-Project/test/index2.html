@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Order Form</title>
+</head>
+
+<body>
+
+<h2>Order Form</h2>
+
+<form id="orderForm">
+
+  <input type="text" id="name" placeholder="Enter Name"><br><br>
+
+  <input type="email" id="email" placeholder="Enter Email"><br><br>
+
+  <select id="product">
+    <option value="">Select Product</option>
+    <option value="Car">Car</option>
+    <option value="Bike">Bike</option>
+  </select><br><br>
+
+  <input type="number" id="quantity" placeholder="Quantity"><br><br>
+
+  <button type="submit">Submit</button>
+
+</form>
+
+<p id="error" style="color:red;"></p>
+
+<div id="result"></div>
+
+<script>
+document.getElementById("orderForm").addEventListener("submit", function(event) {
+
+    event.preventDefault(); // page reload rokta hai
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let product = document.getElementById("product").value;
+    let quantity = document.getElementById("quantity").value;
+
+    let error = document.getElementById("error");
+    let result = document.getElementById("result");
+
+    error.textContent = "";
+    result.innerHTML = "";
+
+    // Validation
+    if (name === "" || email === "" || product === "" || quantity === "") {
+        error.textContent = "Please fill all fields!";
+        return;
+    }
+
+    if (quantity <= 0) {
+        error.textContent = "Quantity must be greater than 0!";
+        return;
+    }
+
+    // Show Result
+    result.innerHTML = `
+        <h3>Order Confirmed ✅</h3>
+        <p>Name: ${name}</p>
+        <p>Email: ${email}</p>
+        <p>Product: ${product}</p>
+        <p>Quantity: ${quantity}</p>
+    `;
+});
+</script>
+
+</body>
+</html>
