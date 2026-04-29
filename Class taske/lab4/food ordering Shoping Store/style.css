@@ -24,6 +24,10 @@ nav {
         background-color: white;
         border: none;
         color: black;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: rgb(111,240,148);
     }
 }
 .Products{    
@@ -34,6 +38,12 @@ img{
     padding: 10px;
     margin: 10px;
     border-radius: 20%;
+    display: flex;
+   
+}
+img:hover{
+    transform:scale(1.1);
+    cursor: pointer;
 }
 }
 .orders{    

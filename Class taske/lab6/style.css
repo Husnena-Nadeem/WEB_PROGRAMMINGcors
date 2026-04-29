@@ -4,6 +4,7 @@ body {
     background-color: #f4fff4;
 }
 
+
 header {
     background-color: green;
     color: white;
@@ -31,6 +32,7 @@ section {
     display: flex;
     flex-direction: column;
     width: 300px;
+    gap: 5px;
 }
 
 input, select, button {
@@ -42,6 +44,7 @@ button {
     background-color: green;
     color: white;
     border: none;
+    transition: 0.3s;
     cursor: pointer;
 }
 
